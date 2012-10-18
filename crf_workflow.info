@@ -8,14 +8,16 @@ dependencies[] = workflow
 dependencies[] = workflow_admin_ui
 dependencies[] = workflow_rules
 dependencies[] = workflow_submit
+dependencies[] = workflow_views
 datestamp = 1342528253
 features[features_api][] = api:1
 features[rules_config][] = rules_email_information_focal_point_on_approval
 features[rules_config][] = rules_email_information_focal_point_on_needs_work
 features[rules_config][] = rules_email_manager_on_submission
+features[user_permission][] = access workflow summary views
+features[user_permission][] = administer workflow
+features[user_permission][] = schedule workflow transitions
 features[workflow][] = CRF Workflow
 l10n path = http://localize.humanitarianresponse.info/sites/localize.humanitarianresponse.info/files/l10n_packager/%core/%project/%project-%release.%language.po
 l10n server = localize.humanitarianresponse.info
 l10n url = http://localize.humanitarianresponse.info/sites/localize.humanitarianresponse.info/files/l10n_packager/l10n_server.xml
-
-
