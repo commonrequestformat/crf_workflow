@@ -47,19 +47,29 @@ function crf_workflow_default_rules_configuration() {
       ]
     }
   }');
-  $items['rules_email_manager_on_submission'] = entity_import('rules_config', '{ "rules_email_manager_on_submission" : {
-      "LABEL" : "Email manager on submission",
+  $items['rules_email_ocha_focal_point_on_submission'] = entity_import('rules_config', '{ "rules_email_ocha_focal_point_on_submission" : {
+      "LABEL" : "Email OCHA focal point on submission",
       "PLUGIN" : "reaction rule",
       "REQUIRES" : [ "workflow_rules", "rules" ],
       "ON" : [ "workflow_state_changed" ],
       "IF" : [
-        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "3" : "3" } } } }
+        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "3" : "3" } } } },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_crf_req_contact" } }
       ],
       "DO" : [
-        { "mail_to_users_of_role" : {
-            "roles" : { "value" : { "4" : "4" } },
-            "subject" : "[node:content-type] provided by [node:author:name] for node:field-cluster:name-field in node:field-crf-request:title",
-            "message" : "Dear X  [where X is the manager],\\r\\n\\r\\nKindly note that [node:author:name] has uploaded a [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title to the CRF website.\\r\\n\\r\\nThe data can be reviewed at: [node:url]\\r\\n\\r\\nAt this point, we encourage you review the submission. If changes are required, you can make the necessary edits and send the information back to [node:author:name] by selecting \\u0022Request Review\\u0022. If the information is complete, you can finish the process by selecting \\u0022Finalise\\u0022\\r\\n\\r\\nKind regards."
+        { "LOOP" : {
+            "USING" : { "list" : [ "node-unchanged:field-crf-req-contact" ] },
+            "ITEM" : { "current_contact" : "Current contact" },
+            "DO" : [
+              { "mail" : {
+                  "to" : [ "current-contact:mail" ],
+                  "subject" : "[node:content-type] provided by [node:author:name] for node:field-cluster:name-field in node:field-crf-request:title",
+                  "message" : "Dear X  [where X is the manager],\\r\\n\\r\\nKindly note that [node:author:name] has uploaded a [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title to the CRF website.\\r\\n\\r\\nThe data can be reviewed at: [node:url]\\r\\n\\r\\nAt this point, we encourage you review the submission. If changes are required, you can make the necessary edits and send the information back to [node:author:name] by selecting \\u0022Request Review\\u0022. If the information is complete, you can finish the process by selecting \\u0022Finalise\\u0022\\r\\n\\r\\nKind regards.",
+                  "from" : [ "node:field-crf-req-contact:0:mail" ],
+                  "language" : [ "" ]
+                }
+              }
+            ]
           }
         }
       ]
