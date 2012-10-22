@@ -15,13 +15,15 @@ function crf_workflow_default_rules_configuration() {
       "REQUIRES" : [ "workflow_rules", "rules" ],
       "ON" : [ "workflow_state_changed" ],
       "IF" : [
-        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "4" : "4" } } } }
+        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "4" : "4" } } } },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_crf_req_contact" } }
       ],
       "DO" : [
         { "mail" : {
             "to" : [ "node:author:mail" ],
             "subject" : "[node:content-type] provided for node:field-cluster:name-field in node:field-crf-request:title is now finalised",
             "message" : "Dear [node:author:name],\\r\\n\\r\\nKindly note that the [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title has been finalised.  The information can be viewed online: [node:url]\\r\\n\\r\\nNo action is required on your part at this time.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
+            "from" : [ "node:field-crf-req-contact:0:mail" ],
             "language" : [ "" ]
           }
         }
@@ -34,13 +36,15 @@ function crf_workflow_default_rules_configuration() {
       "REQUIRES" : [ "workflow_rules", "rules" ],
       "ON" : [ "workflow_state_changed" ],
       "IF" : [
-        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "8" : "8" } } } }
+        { "workflow_check_state" : { "node" : [ "node" ], "workflow_state" : { "value" : { "8" : "8" } } } },
+        { "entity_has_field" : { "entity" : [ "node" ], "field" : "field_crf_req_contact" } }
       ],
       "DO" : [
         { "mail" : {
             "to" : [ "node:author:mail" ],
             "subject" : "OCHA request information review for [node:author:name] in Request [node:field-crf-request:title]",
             "message" : "Dear [node:author:name],\\r\\n\\r\\nOCHA has reviewed your [node:content-type] submission in [node:field-crf-request:title] and has suggested some changes or a review. Kindly review the information at: [node:url].\\r\\n\\r\\nYou can choose to edit the content as well as view a comparison of historical modifications on this [node:content-type] before re-submitting it to OCHA.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
+            "from" : [ "node:field-crf-req-contact:0:mail" ],
             "language" : [ "" ]
           }
         }
