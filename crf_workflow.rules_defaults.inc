@@ -22,7 +22,7 @@ function crf_workflow_default_rules_configuration() {
         { "mail" : {
             "to" : [ "node:author:mail" ],
             "subject" : "[node:content-type] provided for node:field-cluster:name-field in node:field-crf-request:title is now finalised",
-            "message" : "Dear [node:author:name],\\r\\n\\r\\nKindly note that the [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title has been finalised.  The information can be viewed online: [node:url]\\r\\n\\r\\nNo action is required on your part at this time.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
+            "message" : "Dear [node:author:field-first-name] [node:author:field-last-name],\\r\\n\\r\\nKindly note that the [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title has been finalised.  The information can be viewed online: [node:url]\\r\\n\\r\\nNo action is required on your part at this time.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
             "from" : [ "node:field-crf-req-contact:0:mail" ],
             "language" : [ "" ]
           }
@@ -42,8 +42,8 @@ function crf_workflow_default_rules_configuration() {
       "DO" : [
         { "mail" : {
             "to" : [ "node:author:mail" ],
-            "subject" : "OCHA request information review for [node:author:name] in Request [node:field-crf-request:title]",
-            "message" : "Dear [node:author:name],\\r\\n\\r\\nOCHA has reviewed your [node:content-type] submission in [node:field-crf-request:title] and has suggested some changes or a review. Kindly review the information at: [node:url].\\r\\n\\r\\nYou can choose to edit the content as well as view a comparison of historical modifications on this [node:content-type] before re-submitting it to OCHA.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
+            "subject" : "OCHA request information review for [node:author:field-first-name] [node:author:field-last-name] in Request [node:field-crf-request:title]",
+            "message" : "Dear [node:author:field-first-name] [node:author:field-last-name],\\r\\n\\r\\nOCHA has reviewed your [node:content-type] submission in [node:field-crf-request:title] and has suggested some changes or a review. Kindly review the information at: [node:url].\\r\\n\\r\\nYou can choose to edit the content as well as view a comparison of historical modifications on this [node:content-type] before re-submitting it to OCHA.\\r\\n\\r\\nKind regards,\\r\\nOCHA",
             "from" : [ "node:field-crf-req-contact:0:mail" ],
             "language" : [ "" ]
           }
@@ -67,8 +67,8 @@ function crf_workflow_default_rules_configuration() {
             "DO" : [
               { "mail" : {
                   "to" : [ "current-contact:mail" ],
-                  "subject" : "[node:content-type] provided by [node:author:name] for node:field-cluster:name-field in node:field-crf-request:title",
-                  "message" : "Dear X  [where X is the manager],\\r\\n\\r\\nKindly note that [node:author:name] has uploaded a [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title to the CRF website.\\r\\n\\r\\nThe data can be reviewed at: [node:url]\\r\\n\\r\\nAt this point, we encourage you review the submission. If changes are required, you can make the necessary edits and send the information back to [node:author:name] by selecting \\u0022Request Review\\u0022. If the information is complete, you can finish the process by selecting \\u0022Finalise\\u0022\\r\\n\\r\\nKind regards.",
+                  "subject" : "[node:content-type] provided by [node:author:field-first-name] [node:author:field-last-name] for node:field-cluster:name-field in node:field-crf-request:title",
+                  "message" : "Dear [current-contact:field-first-name] [current-contact:field-last-name],\\r\\n\\r\\nKindly note that [node:author:field-first-name] [node:author:field-last-name] has uploaded a [node:content-type] for node:field-cluster:name-field in the Information Request node:field-crf-request:title to the CRF website.\\r\\n\\r\\nThe data can be reviewed at: [node:url]\\r\\n\\r\\nAt this point, we encourage you review the submission. If changes are required, you can make the necessary edits and send the information back to [node:author:name] by selecting \\u0022Request Review\\u0022. If the information is complete, you can finish the process by selecting \\u0022Finalise\\u0022\\r\\n\\r\\nKind regards.",
                   "from" : [ "node:author:mail" ],
                   "language" : [ "" ]
                 }
