@@ -29,7 +29,7 @@ function crf_workflow_workflow_default_workflows() {
         'status' => '1',
       ),
       2 => array(
-        'state' => 'Submit',
+        'state' => 'Submit to OCHA',
         'weight' => '0',
         'sysid' => '0',
         'status' => '1',
@@ -56,26 +56,26 @@ function crf_workflow_workflow_default_workflows() {
       1 => array(
         'roles' => 'workflow_features_author_name',
         'state' => '(creation)',
-        'target_state' => 'Submit',
+        'target_state' => 'Submit to OCHA',
       ),
       2 => array(
         'roles' => 'workflow_features_author_name',
         'state' => 'Save Draft',
-        'target_state' => 'Submit',
+        'target_state' => 'Submit to OCHA',
       ),
       3 => array(
         'roles' => 'administrator',
-        'state' => 'Submit',
+        'state' => 'Submit to OCHA',
         'target_state' => 'Save Draft',
       ),
       4 => array(
         'roles' => 'administrator',
-        'state' => 'Submit',
+        'state' => 'Submit to OCHA',
         'target_state' => 'Finalise',
       ),
       5 => array(
         'roles' => 'administrator',
-        'state' => 'Submit',
+        'state' => 'Submit to OCHA',
         'target_state' => 'Request Review',
       ),
       6 => array(
@@ -86,7 +86,7 @@ function crf_workflow_workflow_default_workflows() {
       7 => array(
         'roles' => 'administrator',
         'state' => 'Finalise',
-        'target_state' => 'Submit',
+        'target_state' => 'Submit to OCHA',
       ),
       8 => array(
         'roles' => 'administrator',
@@ -96,7 +96,7 @@ function crf_workflow_workflow_default_workflows() {
       9 => array(
         'roles' => 'workflow_features_author_name,administrator',
         'state' => 'Request Review',
-        'target_state' => 'Submit',
+        'target_state' => 'Submit to OCHA',
       ),
       10 => array(
         'roles' => 'administrator',
