@@ -36,6 +36,7 @@ function crf_workflow_user_default_permissions() {
     'name' => 'schedule workflow transitions',
     'roles' => array(
       0 => 'administrator',
+      1 => 'manager',
     ),
     'module' => 'workflow',
   );
